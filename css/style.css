@@ -3,10 +3,24 @@
   margin: 0;
   padding: 0;
 }
-
+.holiday {
+  color: red;
+}
 .select {
   display: flex;
 }
 .select > div {
   margin:auto;
+}
+.date-list {
+  width: 10%;
+  margin: auto;
+}
+.previous, .next {
+  display: flex;
+  cursor: pointer;
+}
+li {
+  list-style: none;
+  padding: 2px;
 }
