@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <!-- /Link jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Link handlebars -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw==" crossorigin="anonymous"></script>
+    <!-- Link moment.js -->
+    <script src="https://momentjs.com/downloads/moment.js" charset="utf-8"></script>
+    <title>Calendar</title>
+  </head>
+  <body>
+    <header class="select">
+      <div class="previous">
+        <i class="fas fa-angle-double-left"></i>
+        <p>Precedente</p>
+      </div>
+      <div class="month">
+        <h1>Gennaio</h1>
+      </div>
+      <div class="next">
+        <p>Successivo</p>
+        <i class="fas fa-angle-double-right"></i>
+      </div>
+    </header>
+    <main class="date">
+      <ul class="date-list">
+
+      </ul>
+    </main>
+
+
+    <!-- Days template -->
+    <script id="entry-template" type="text/x-handlebars-template">
+    <li class="day">{{date}}</li>
+    </script>
+
+    <script src="js/script.js" charset="utf-8"></script>
+  </body>
+</html>
