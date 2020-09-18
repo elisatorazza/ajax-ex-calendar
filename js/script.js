@@ -13,7 +13,7 @@ $(document).ready(function() {
       "year" : 2018,
     }
     var html = template(startDate);
-    
+
     $(".date-list").append(html);
     $.ajax (
       {
@@ -21,6 +21,7 @@ $(document).ready(function() {
        "method": "GET",
        "success": function (data, stato){
         if (data["response"].date == startDate) {
+          console.log(data["response"]);
           $(".day").addClass("holiday");
         }
        }
