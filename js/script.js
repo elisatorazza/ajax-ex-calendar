@@ -28,7 +28,7 @@ $(".next").click(function (){
  if (month==11) {
    alert("Impossibile verificare calendario successivo");
  } else if (date.daysInMonth(31)){
-   var newDate = moment(date).add(31, 'days');
+   var newDate = moment(date).add(1, "month");
    $(".date-list").empty();
    month = newDate.month();
    startMonth = printCalendar(newDate);
