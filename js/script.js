@@ -2,6 +2,7 @@ $(document).ready(function() {
 
   var date = moment("01-01-2018", "DD-MM-YYYY");
   var month = date.month();
+  console.log(month);
   var monthInLetter = moment().month(month).format("MMMM");
   var startMonth = printCalendar(date);
   var startHoliday = printHoliday (date);
@@ -24,28 +25,28 @@ $(".previous").click(function (){
 
 //Al click su successivo, vediamo il mese successivo
 $(".next").click(function (){
- if (month == 11) {
+ if (month==11) {
    alert("Impossibile verificare calendario successivo");
- } else if (date.daysInMonth() == 31){
+ } else if (date.daysInMonth(31)){
    var newDate = moment(date).add(31, 'days');
-    $(".date-list").empty();
+   $(".date-list").empty();
+   month = newDate.month();
    startMonth = printCalendar(newDate);
    startHoliday = printHoliday(newDate);
    date = newDate;
    console.log(newDate);
    console.log(newDate.format('YYYY-MM-DD'));
- } //else if (date.daysInMonth() == 30) {
- //   var newDate = moment(newDate).add(30, 'days');
- //   startMonth = printCalendar(newDate);
- //   startHoliday = printHoliday(newDate);
- //   date = newDate;
- // } else if (date.daysInMonth() == 28){
- //   var newDate = moment(newDate).add(28, 'days');
- //   startMonth = printCalendar(newDate);
- //   startHoliday = printHoliday(newDate);
- //   date = newDate;
- //}
-
+ } else if (date.daysInMonth() == 30) {
+   var newDate = moment(newDate).add(30, 'days');
+   startMonth = printCalendar(newDate);
+   startHoliday = printHoliday(newDate);
+   date = newDate;
+ } else if (date.daysInMonth() == 28){
+   var newDate = moment(newDate).add(28, 'days');
+   startMonth = printCalendar(newDate);
+   startHoliday = printHoliday(newDate);
+   date = newDate;
+ }
 })
 
 // funzione per stampare il calendario//
