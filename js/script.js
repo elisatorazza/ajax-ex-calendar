@@ -1,10 +1,14 @@
 $(document).ready(function() {
 
-  var date = moment("01-01-2018", "DD-MM-YYYY");
+  var date = moment("01-03-2018", "DD-MM-YYYY");
+  var month = date.month();
+  printCalendar (date);
+  printHoliday (date);
 
+function printCalendar (date) {
   var daysInMonth = date.daysInMonth();
 
-  var month = date.month();
+
   var monthInLetter = moment().month(month).format("MMMM");
 
   $("h1").text(moment().month(month).format("MMMM"));
@@ -26,7 +30,10 @@ $(document).ready(function() {
     $(".date-list").append(html);
     date.add(1, "day");
     }
+  }
 
+
+  function printHoliday (holiday) {
     $.ajax (
       {
        "url": "https://flynn.boolean.careers/exercises/api/holidays",
@@ -43,7 +50,7 @@ $(document).ready(function() {
           $(".day[data-attribute='"+holiday+"'] .holiday-type").text(holidayName);
           }
           }
-        });
-
+      });
+    }
     }
     )
