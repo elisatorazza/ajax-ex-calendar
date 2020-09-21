@@ -3,8 +3,8 @@ $(document).ready(function() {
   var date = moment("01-01-2018", "DD-MM-YYYY");
   var month = date.month();
   var monthInLetter = moment().month(month).format("MMMM");
-  printCalendar (date);
-  printHoliday (date);
+  var startMonth = printCalendar(date);
+  var startHoliday = printHoliday (date);
 
 //Al click su precedente
 $(".previous").click(function (){
@@ -26,16 +26,22 @@ $(".previous").click(function (){
 $(".next").click(function (){
  if (month == 11) {
    alert("Impossibile verificare calendario successivo");
- } else {
-   var newDate = moment("01-01-2018", "DD-MM-YYYY");
+ } else //if (date.daysInMonth() == 31){
+   {var newDate = moment("01-01-2018", "DD-MM-YYYY");
    console.log(newDate);
-   var newDate = moment(newDate).add(1, 'months');
+   var newDate = moment(newDate).add(31, 'days');
    console.log(newDate);
+   console.log(newDate.format('YYYY-MM-DD'));
    // var month = newDate.month();
    // printCalendar (newDate);
    // printHoliday (newDate);
- }
-
+ } //else if (date.daysInMonth() == 30) {
+ //   var newDate = moment(newDate).add(30, 'days');
+ // } else if (date.daysInMonth() == 28){
+ //   var newDate = moment(newDate).add(28, 'days');
+ // }
+ startMonth = printCalendar(newDate);
+ startHoliday = printHoliday(newDate);
 })
 
 
@@ -43,26 +49,25 @@ $(".next").click(function (){
 function printCalendar (date) {
   var daysInMonth = date.daysInMonth();
 
-
   $("h1").text(moment().month(month).format("MMMM"));
 
   for (var i = 1; i<=daysInMonth; i++) {
 
-    var source = $("#entry-template").html();
-    var template = Handlebars.compile(source);
+      var source = $("#entry-template").html();
+      var template = Handlebars.compile(source);
 
-    var startDate = {
-      "day" : i,
-      "month" : date.format("MMMM"),
-      "year" : 2018,
-      "dateComplete": date.format("YYYY-MM-DD"),
-    }
+      var startDate = {
+        "day" : i,
+        "month" : date.format("MMMM"),
+        "year" : 2018,
+        "dateComplete": date.format("YYYY-MM-DD"),
+      }
 
-    var html = template(startDate);
+      var html = template(startDate);
 
-    $(".date-list").append(html);
-    date.add(1, "day");
-    }
+      $(".date-list").append(html);
+      date.add(1, "day");
+      }
   }
 
 //funzione per stampare le festività//
