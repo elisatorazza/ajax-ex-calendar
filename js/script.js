@@ -27,8 +27,8 @@ $(".previous").click(function (){
 $(".next").click(function (){
  if (month==11) {
    alert("Impossibile verificare calendario successivo");
- } else if (date.daysInMonth(31)){
-   var newDate = moment(date).add(1, "month");
+ } else {
+   var newDate = moment(date).add(1, "months");
    $(".date-list").empty();
    month = newDate.month();
    startMonth = printCalendar(newDate);
@@ -36,17 +36,17 @@ $(".next").click(function (){
    date = newDate;
    console.log(newDate);
    console.log(newDate.format('YYYY-MM-DD'));
- } else if (date.daysInMonth() == 30) {
-   var newDate = moment(newDate).add(30, 'days');
-   startMonth = printCalendar(newDate);
-   startHoliday = printHoliday(newDate);
-   date = newDate;
- } else if (date.daysInMonth() == 28){
-   var newDate = moment(newDate).add(28, 'days');
-   startMonth = printCalendar(newDate);
-   startHoliday = printHoliday(newDate);
-   date = newDate;
- }
+ } //else if (date.daysInMonth() == 30) {
+ //   var newDate = moment(newDate).add(30, 'days');
+ //   startMonth = printCalendar(newDate);
+ //   startHoliday = printHoliday(newDate);
+ //   date = newDate;
+ // } else if (date.daysInMonth() == 28){
+ //   var newDate = moment(newDate).add(28, 'days');
+ //   startMonth = printCalendar(newDate);
+ //   startHoliday = printHoliday(newDate);
+ //   date = newDate;
+ // }
 })
 
 // funzione per stampare il calendario//
