@@ -19,7 +19,7 @@
         <p>Precedente</p>
       </div>
       <div class="month">
-        <h1>Gennaio</h1>
+        <h1></h1>
       </div>
       <div class="next">
         <p>Successivo</p>
@@ -35,7 +35,7 @@
 
     <!-- Days template -->
     <script id="entry-template" type="text/x-handlebars-template">
-    <li class="day">{{day}} {{month}} {{year}}</li>
+    <li class="day" data-attribute ="{{dateComplete}}">{{day}} {{month}} {{year}}<span class="holiday-type"></span></li>
     </script>
 
     <script src="js/script.js" charset="utf-8"></script>
