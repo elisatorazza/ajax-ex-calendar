@@ -1,15 +1,48 @@
 $(document).ready(function() {
 
-  var date = moment("01-03-2018", "DD-MM-YYYY");
+  var date = moment("01-01-2018", "DD-MM-YYYY");
   var month = date.month();
+  var monthInLetter = moment().month(month).format("MMMM");
   printCalendar (date);
   printHoliday (date);
 
+//Al click su precedente
+$(".previous").click(function (){
+ if (month == 0) {
+   alert("Impossibile verificare calendario precedente");
+ } else {
+   var newDate = moment("01-01-2018", "DD-MM-YYYY");
+   console.log(newDate);
+   var newDate = date.subtract (1, "months");
+   console.log(newDate);
+   var month = newDate.month();
+   printCalendar (newDate);
+   printHoliday (newDate);
+ }
+
+})
+
+//Al click su successivo, vediamo il mese successivo
+$(".next").click(function (){
+ if (month == 11) {
+   alert("Impossibile verificare calendario successivo");
+ } else {
+   var newDate = moment("01-01-2018", "DD-MM-YYYY");
+   console.log(newDate);
+   var newDate = moment(newDate).add(1, 'months');
+   console.log(newDate);
+   // var month = newDate.month();
+   // printCalendar (newDate);
+   // printHoliday (newDate);
+ }
+
+})
+
+
+// funzione per stampare il calendario//
 function printCalendar (date) {
   var daysInMonth = date.daysInMonth();
 
-
-  var monthInLetter = moment().month(month).format("MMMM");
 
   $("h1").text(moment().month(month).format("MMMM"));
 
@@ -32,7 +65,7 @@ function printCalendar (date) {
     }
   }
 
-
+//funzione per stampare le festività//
   function printHoliday (holiday) {
     $.ajax (
       {
